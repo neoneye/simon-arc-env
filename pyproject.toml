@@ -1,0 +1,33 @@
+[project]
+name = "simon-arc-env"
+version = "0.1.0"
+description = """Abstraction and reasoning corpus as a Farama Gymnasium environment."""
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Simon Strandgaard", email = "neoneye@gmail.com" },
+]
+maintainers = [
+    { name = "Simon Strandgaard", email = "neoneye@gmail.com" },
+]
+keywords = ["arc", "abstraction-reasoning-corpus", "gymnasium", "reinforcement-learning"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries"
+]
+dependencies = [
+    "gymnasium ~= 0.29.0",
+    "numpy ~= 1.25.2",
+    "pygame ~= 2.5.0"
+]
+
+[build-system]
+requires = ["setuptools ~= 65.5.0"]
+
+[project.urls]
+homepage = "https://github.com/neoneye/simon-arc-env"
+documentation = "https://github.com/neoneye/simon-arc-env"
+repository = "https://github.com/neoneye/simon-arc-env.git"
+changelog = "https://github.com/neoneye/simon-arc-env/releases"
