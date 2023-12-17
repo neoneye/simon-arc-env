@@ -1,25 +1,21 @@
 # Examples
 
-## Play pretty
+## Play the game
 
 Interact with the game.
 
 ```bash
-python play_pretty.py
+python play.py
 ```
 
-## Play ugly minimal
-
-Interact with the game.
-
-```bash
-python play_ugly_minimal.py
-```
-
-## Perform random actions
-
-No UI visible.
+## Perform random actions with UI visible
 
 ```bash
 python random_actions.py
+```
+
+## Perform random actions without UI
+
+```bash
+python random_actions_headless.py
 ```
