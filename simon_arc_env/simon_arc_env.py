@@ -37,7 +37,7 @@ class SimonARCEnv(gym.Env):
 
         self.assign_default_values()
 
-        scale = 10
+        scale = 20
         width = 32 * scale
         height = 32 * scale
         self._width = width
