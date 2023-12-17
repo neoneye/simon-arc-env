@@ -1,7 +1,7 @@
 # Simon ARC Env
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/neoneye/simon-arc-env/simon-arc-env.gif"
+    <img src="https://raw.githubusercontent.com/neoneye/simon-arc-env/main/simon-arc-env.gif"
         alt="simon arc env"/>
 </p>
 
@@ -25,7 +25,7 @@
         </tr>
         <tr>
             <td>Import</td>
-            <td>import simon_arc_env  # noqa<br/>gymnasium.make("SimonARC-v0")</td>
+            <td>import simon_arc_env<br/>gymnasium.make("SimonARC-v0")</td>
         </tr>
     </tbody>
 </table>
