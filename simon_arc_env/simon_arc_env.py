@@ -1,8 +1,3 @@
-# Available actions on every page:
-# Show a bit mask of the available actions in the right side of the 32x32 image.
-# The editor page has several actions enabled.
-# The non-editor pages has few actions enabled.
-# This way the RL knows what actions are available here.
 from typing import Any, Dict, List, SupportsFloat, Tuple
 from gymnasium.core import ActType, ObsType, RenderFrame
 import os
