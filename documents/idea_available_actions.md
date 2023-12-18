@@ -3,6 +3,7 @@
 Show a bit mask of the available actions in the right side of the 32x32 image.
 - The editor page has several actions enabled.
 - The non-editor pages has few actions enabled.
+
 This way the RL knows what actions are available here. This prevents taking bad actions.
 
 The 32x32 image is contained in an observation. The observation show what actions that can be taken in the next step.
