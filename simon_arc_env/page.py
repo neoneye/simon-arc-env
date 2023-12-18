@@ -72,3 +72,39 @@ class Page:
 
     def cropped_image(self) -> Image:
         return self.image.crop(0, 0, self.width, self.height)
+
+    def reward_prediction(self, test_count: int) -> SupportsFloat:
+        assert test_count >= 1
+
+        if self.is_editor == False:
+            return 0.0
+
+        if self.expected_test_output is None:
+            return 0.0
+        expected_image = self.expected_test_output
+        
+        predicted_image = self.cropped_image()
+
+        reward = 0.0
+
+        # reward 1000 minus the number of unassigned pixels
+        unassigned_pixels = predicted_image.count_pixels_with_value(11)
+        reward += 1000.0 - unassigned_pixels
+        # print(f"predicted size: {predicted_image.width}x{predicted_image.height}")
+        # print(predicted_image.pixels)
+
+        # print("Expected output:")
+        # print(f"expected size: {expected_image.width}x{expected_image.height}")
+        # print(expected_image.pixels)
+        if predicted_image.width == expected_image.width:
+            reward += 100.0
+        if predicted_image.height == expected_image.height:
+            reward += 100.0
+        if predicted_image.histogram() == expected_image.histogram():
+            # Reward when the predicted histogram is correct.
+            reward += 100.0
+        if predicted_image.equals(expected_image):
+            # High reward when the prediction is correct.
+            # Max reward when all the tests are solved correctly.
+            reward += 10000.0 / test_count
+        return reward

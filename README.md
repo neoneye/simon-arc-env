@@ -63,7 +63,7 @@ necessary to access the environment.
 
 ## Action Space
 
-`SimonsARC` has the action space `Discrete(10)`.
+`SimonARC` has the action space `Discrete(10)`.
 
 | Value | Key         | Meaning               |
 |-------|-------------|-----------------------|

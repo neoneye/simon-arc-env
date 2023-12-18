@@ -1,8 +1,3 @@
-# Weakness:
-# Cannot deal with tasks that have 2 or more test pairs.
-# the ARC dataset has several tasks with 2 or more test pairs.
-# Rework the Page.create_pages() so it can deal with tasks that have 2 or more test pairs.
-#
 # Available actions on every page:
 # Show a bit mask of the available actions in the right side of the 32x32 image.
 # The editor page has several actions enabled.
@@ -57,10 +52,6 @@ class SimonARCEnv(gym.Env):
             for json_filename in json_filenames_sorted:
                 path = os.path.join(path_to_task_dir, json_filename)
                 task = ajm.Task.load(path)
-                _, test = task.train_test()
-                if test >= 2:
-                    print(f"Skipping task with 2 or more test pairs. filename: {json_filename}")
-                    continue
                 tasks.append(task)
 
         assert len(tasks) > 0, "Unable to load any tasks from the given directory."
@@ -137,38 +128,18 @@ class SimonARCEnv(gym.Env):
 
         if action == Actions.SUBMIT_DRAWING.value:
             # print("Action - submit drawing.")
+            self._total_score += 1.0
+
+            _, test_count = self._task.train_test()
+            for page in self._pages:
+                self._total_score += page.reward_prediction(test_count)
+
             if self._page.is_editor:
-                self._total_score += 1.0
-                predicted_image = self._page.cropped_image()
-
-                # reward 1000 minus the number of unassigned pixels
-                unassigned_pixels = predicted_image.count_pixels_with_value(11)
-                self._total_score += 1000.0 - unassigned_pixels
-                # print(f"predicted size: {predicted_image.width}x{predicted_image.height}")
-                # print(predicted_image.pixels)
-
-                if self._page.expected_test_output is not None:
-                    expected_image = self._page.expected_test_output
-                    # print("Expected output:")
-                    # print(f"expected size: {expected_image.width}x{expected_image.height}")
-                    # print(expected_image.pixels)
-                    if predicted_image.width == expected_image.width:
-                        self._total_score += 100.0
-                    if predicted_image.height == expected_image.height:
-                        self._total_score += 100.0
-                    if predicted_image.histogram() == expected_image.histogram():
-                        # Reward when the predicted histogram is correct.
-                        self._total_score += 100.0
-                    if predicted_image.equals(expected_image):
-                        # High reward when the prediction is correct.
-                        self._total_score += 10000.0
-
+                # The "submit action" is only supposed to be used on the editor pages.
                 terminated = True # ends the game the correct way
             else:
-                # self._total_score -= 1000.0
-                # self._total_score -= 1.0
-                # self._total_score = 0.0
-                truncated = True # aborts the game prematurely
+                # Invoking the "submit action" on a non-editor page, then abort the game prematurely.
+                truncated = True
 
         if action == Actions.SET_PIXEL.value:
             self._total_score += self._page.handle_set_pixel(self._cursor_x, self._cursor_y, self._color)
