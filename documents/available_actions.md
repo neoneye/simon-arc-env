@@ -1,4 +1,6 @@
-# Idea: Available actions
+# Draft: Available actions
+
+This is an idea. It's not implemented. I'm considering adding this.
 
 Show a bit mask of the available actions in the right side of the 32x32 image.
 - The editor page has several actions enabled.
