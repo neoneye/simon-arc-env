@@ -76,11 +76,11 @@ tile 5
 
 In the above case all the `2x2` tiles are unique.
 
-When comparing with another image, that also have all unique `2x2` tiles, then there is some similarity.
+When comparing with another image, that also have all unique `2x2` tiles, then both images share this uniqueness property.
 
 ### Normalize
 
-Normalise the rotation/flipping of the `2x2` tiles, so no matter what orientation the tile has, it will yield the same hash.
+Normalize the rotation/flipping of the `2x2` tiles, so no matter what orientation the tile has, it will yield the same hash.
 
 ```
 1, 0
