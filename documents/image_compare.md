@@ -28,7 +28,7 @@ This distance indicates how similar the two images are. If the distance is zero 
 
 ## Histogram of 2x2 pixels
 
-Similar to the single pixel histogram, do the same with small images with size `2x2`.
+Count the frequency of tiles. Similar to the single pixel histogram, do the same with small images with size `2x2`.
 
 This is similar to [ngrams](https://en.wikipedia.org/wiki/N-gram).
 
@@ -158,7 +158,22 @@ Small tile sizes: `1x1, 1x2, 1x3, 1x4, 1x5, 2x2, 2x3, 2x4, 2x5, 3x3, 3x4, 3x5, 4
 Do the same kind of histogram with these tile sizes.
 
 
-## Compare variance
+### Tile pattern complexity
+
+If a tile use only one color, then it's low complexity.
+
+If every pixel in the tile is unique, then it's maximum complexity.
+
+Can this be expressed as a complexity value?
+
+
+### Tile sequence analysis
+
+Consider the sequence in which tiles appear in the image. 
+This sequential analysis could reveal patterns or regularities that are not evident from individual tile analysis alone.
+
+
+## Compare overall variance for direction
 
 What is the average length of same colored pixels.
 
