@@ -187,7 +187,7 @@ In LODA-RUST I measured variance over 3 adjacent pixels, and I'm describing it h
 | top right - bottom left | How much does the pixels change along `Diagonal B`. |
 
 Example: Horizontal stripes. has `left - right` variance: average is 3 and sigma is 0.
-When considering 3 adjacent pixels the highest nubmer of same colored pixels is 3.
+When considering 3 adjacent pixels the highest number of same colored pixels is 3.
 
 ```
 horizontal stripes
@@ -197,7 +197,7 @@ horizontal stripes
 ```
 
 Example: diagonal stripe. Here the `top left - bottom right` variance. Average is 3 and sigma is 0.
-When considering 3 adjacent pixels the highest nubmer of same colored pixels is 3.
+When considering 3 adjacent pixels the highest number of same colored pixels is 3.
 
 ```
 diagonal stripe
