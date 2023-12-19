@@ -177,7 +177,7 @@ This sequential analysis could reveal patterns or regularities that are not evid
 
 What is the average length of same colored pixels.
 
-In LODA-RUST I measured variance over 3 adjacent pixels, and I'm describing it here.
+In [LODA-RUST](https://github.com/loda-lang/loda-rust) I measured variance over 3 adjacent pixels, and I'm describing it here.
 
 | Direction               | Explanation                                         |
 |-------------------------|-----------------------------------------------------|
