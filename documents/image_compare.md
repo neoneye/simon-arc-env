@@ -40,7 +40,7 @@ This distance indicates how similar the two images are. If the distance is zero 
 
 ### Raw pixel data
 
-Example. This `3x4` image:
+Example. This `4x3` image:
 ```
 0, 1, 2, 3
 4, 5, 6, 7
@@ -95,7 +95,7 @@ Same as
 
 ### Count unique/sameness
 
-Two images may share the same structure, with with different colors assigned. Reward when the structure is similar.
+Two images may share the same structure, while using different colors. Reward when the structure is similar.
 
 In order to only consider the structure and ignore the colors, this `unique/sameness` approach may help.
 
@@ -120,6 +120,36 @@ counter: 4, all the same
 0, 0
 0, 0
 ```
+
+### Most popular color, least popular color
+
+Two images may share the same structure, while using different colors. Reward when the structure is similar.
+
+In the case where the most popular color may differ between two images. 
+
+Here the colors can be normalized, by putting the colors in different bins.
+- Replace the most popular color gets with `A`. 
+- Replace the medium/most popular color with `B`.
+- Replace the medium popular color with `C`.
+- Replace the medium/least popular color with `D`.
+- Replace the least popular color with `E`.
+
+```
+5, 5, 5, 0
+5, 0, 5, 0
+5, 5, 5, 0
+```
+
+Doing the replacement and it becomes a normalized image like this
+
+```
+A, A, A, E
+A, E, A, E
+A, A, A, E
+```
+
+With the normalized image, apply the histogram comparisons described in this document.
+
 
 
 ## Histogram of NxM pixels
