@@ -78,7 +78,7 @@ In the above case all the `2x2` tiles are unique.
 
 When comparing with another image, that also have all unique `2x2` tiles, then both images share this uniqueness property.
 
-### Normalize
+### Normalize tile orientation
 
 Normalize the rotation/flipping of the `2x2` tiles, so no matter what orientation the tile has, it will yield the same hash.
 
@@ -93,7 +93,7 @@ Same as
 1, 0
 ```
 
-### Count unique/sameness
+### Count tile unique/sameness
 
 Two images may share the same structure, while using different colors. Reward when the structure is similar.
 
@@ -121,7 +121,7 @@ counter: 4, all the same
 0, 0
 ```
 
-### Most popular color, least popular color
+### Normalize tile color
 
 Two images may share the same structure, while using different colors. Reward when the structure is similar.
 
@@ -151,9 +151,48 @@ A, A, A, E
 With the normalized image, apply the histogram comparisons described in this document.
 
 
-
 ## Histogram of NxM pixels
 
 Small tile sizes: `1x1, 1x2, 1x3, 1x4, 1x5, 2x2, 2x3, 2x4, 2x5, 3x3, 3x4, 3x5, 4x4, 4x5, 5x5`.
 
 Do the same kind of histogram with these tile sizes.
+
+
+## Compare variance
+
+What is the average length of same colored pixels.
+
+In LODA-RUST I measured variance over 3 adjacent pixels, and I'm describing it here.
+
+| Direction               | Explanation                                         |
+|-------------------------|-----------------------------------------------------|
+| left - right            | How much does the pixels change along the x axis.   |
+| top - bottom            | How much does the pixels change along the y axis.   |
+| top left - bottom right | How much does the pixels change along `Diagonal A`. |
+| top right - bottom left | How much does the pixels change along `Diagonal B`. |
+
+Example: Horizontal stripes. has `left - right` variance: average is 3 and sigma is 0.
+When considering 3 adjacent pixels the highest nubmer of same colored pixels is 3.
+
+```
+horizontal stripes
+5, 5, 5, 5
+7, 7, 7, 7
+9, 9, 9, 9
+```
+
+Example: diagonal stripe. Here the `top left - bottom right` variance. Average is 3 and sigma is 0.
+When considering 3 adjacent pixels the highest nubmer of same colored pixels is 3.
+
+```
+diagonal stripe
+7, 0, 0, 0
+0, 7, 0, 0
+0, 0, 7, 0
+0, 0, 0, 7
+```
+
+When comparing two images, if they have `sigma=0` for a direction, then it may be an indicator that 
+the images shares same structure.
+
+
