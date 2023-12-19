@@ -95,6 +95,10 @@ Same as
 
 ### Count unique/sameness
 
+Two images may share the same structure, with with different colors assigned. Reward when the structure is similar.
+
+In order to only consider the structure and ignore the colors, this `unique/sameness` approach may help.
+
 ```
 counter: 1 1 1 1, unique
 0, 1
@@ -116,8 +120,6 @@ counter: 4, all the same
 0, 0
 0, 0
 ```
-
-
 
 
 ## Histogram of NxM pixels
