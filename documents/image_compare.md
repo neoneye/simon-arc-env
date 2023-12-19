@@ -42,9 +42,9 @@ This distance indicates how similar the two images are. If the distance is zero 
 
 Example. This `3x4` image:
 ```
-0, 1, 2, 3,
-4, 5, 6, 7,
-8, 9, 10, 11,
+0, 1, 2, 3
+4, 5, 6, 7
+8, 9, 10, 11
 ```
 
 Can be split it into these `2x2` tiles:
