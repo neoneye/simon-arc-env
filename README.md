@@ -34,6 +34,8 @@
 
 [Abstraction and Reasoning Corpus](https://github.com/fchollet/ARC) as a [Farama Gymnasium](https://github.com/Farama-Foundation/Gymnasium) environment.
 
+Related project: [ARCLE - ARC Learning Environment](https://github.com/ConfeitoHS/arcle).
+
 ### Installation
 
 ```bash
